@@ -22,6 +22,8 @@ Route::get('login', [LoginController::class, 'login'])->name('login.index');
 Route::post('login', [LoginController::class, 'handleLogin'])->name('login');
 
 Route::group(['middleware' => 'auth:web'], function () {
+    // halaman user
+    Route::get('halaman-user', [LoginController::class, 'login'])->name('login.index');
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
     Route::group(['middleware' => 'can:role,"admin"'], function () {
         Route::get('/admin', function () {
